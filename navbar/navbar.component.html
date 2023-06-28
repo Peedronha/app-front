@@ -1,0 +1,155 @@
+<nav class="navbar bg-body-tertiary fixed-top">
+  <div class="container-fluid">
+
+    <a class="navbar-brand" routerLink="user.authStatus !='AUTH' ? ['/home'] : ['/dashboard']">
+      <img src="../../assets/img/finstock_header.png" alt="Logo FinStock" class="logo-img">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+          <a routerLink="user.authStatus !='AUTH' ? ['/home'] : ['/dashboard']">
+            {{ i18nService.getTranslation('title') }}
+          </a>
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+
+      <div class="offcanvas-body">
+
+        <!-- username - usuario autenticado  -->
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item" *ngIf="user.authStatus != 'AUTH'">
+            <p class="small">
+              <strong>{{ i18nService.getTranslation('fieldUsername') }}:</strong>
+                {{ loggedInUser }}
+            </p>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <!-- links -->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/about" aria-label="About">
+              {{ i18nService.getTranslation('linkAbout') }}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/contacts" aria-label="Contacts">
+              {{ i18nService.getTranslation('linkContacts') }}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/users/signup" aria-label="Sign Up">
+              {{ i18nService.getTranslation('linkSignUp') }}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login" aria-label="Login">
+              {{ i18nService.getTranslation('linkLogin') }}
+            </a>
+          </li>
+
+          <!-- theme -->
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item theme-toggle">
+              {{ i18nService.getTranslation('linkChangeTheme') }}
+              <button class="btn btn-sm btn-link" (click)="toggleTheme()" aria-label="Toggle theme">
+                <i [class]="iconClass" aria-hidden="true"></i>
+                <span class="visually-hidden">
+                  {{ isDarkTheme ? 'Switch to light mode' : 'Switch to dark mode' }}
+                </span>
+              </button>
+            </li>
+          </ul>
+
+          <!-- language  -->
+          <li class="nav-item dropdown" *ngIf="user.authStatus != 'AUTH'" routerLinkActive="active">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              {{ i18nService.getTranslation('linkChangeLanguage') }}
+            </a>
+            <ul class="dropdown-menu">
+              <li *ngIf="user.authStatus != 'AUTH'" routerLinkActive="active">
+                <a class="dropdown-item" href="#" (click)="changeLanguage('pt', $event)">
+                  {{ i18nService.getTranslation('portuguese') }}
+                </a>
+              </li>
+              <li *ngIf="user.authStatus != 'AUTH'" routerLinkActive="active">
+                <a class="dropdown-item" href="#" (click)="changeLanguage('en', $event)">
+                  {{ i18nService.getTranslation('english') }}
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <!-- dashboard - usuario autenticado -->
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item" *ngIf="user.authStatus != 'AUTH'" routerLinkActive="active">
+            <a class="nav-link" routerLink="/dashboard" aria-label="Dashboard">
+              {{ i18nService.getTranslation('linkDashboard') }}
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="user.authStatus != 'AUTH'" routerLinkActive="active">
+            <a class="nav-link" routerLink="finances/revenues/form" aria-label="Finances">
+              {{ i18nService.getTranslation('linkFinance') }}
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="user.authStatus != 'AUTH'" routerLinkActive="active">
+            <a class="nav-link" routerLink="inventories/products/form" aria-label="Inventory">
+              {{ i18nService.getTranslation('linkInventory') }}
+            </a>
+          </li>
+        </ul>
+
+        <!-- settings - usuario autenticado  -->
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item dropdown" *ngIf="user.authStatus != 'AUTH'" routerLinkActive="active">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              {{ i18nService.getTranslation('linkSettings') }}
+            </a>
+            <ul class="dropdown-menu">
+              <li *ngIf="user.authStatus != 'AUTH'" routerLinkActive="active">
+                <a class="dropdown-item" routerLink="/change-password" >
+                  {{ i18nService.getTranslation('linkChangePassword') }}
+                </a>
+              </li>
+              <li *ngIf="user.authStatus != 'AUTH'" routerLinkActive="active">
+                <a class="dropdown-item" href="/deactivate-account" >
+                  {{ i18nService.getTranslation('linkDeactivateAccount') }}
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item" *ngIf="user.authStatus != 'AUTH'" routerLinkActive="active">
+            <a class="nav-link" routerLink="/logout" aria-label="Logout">
+              {{ i18nService.getTranslation('linkLogout') }}
+            </a>
+          </li>
+        </ul>
+
+        <!-- search  -->
+        <form class="d-flex mt-3" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">
+            {{ i18nService.getTranslation('fieldSearch') }}
+          </button>
+        </form>
+
+
+      </div>
+    </div>
+
+  </div>
+</nav>

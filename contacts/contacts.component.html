@@ -1,0 +1,46 @@
+<div class="container container-contact">
+  <h2 class="text-center" tabindex="0">
+    {{ i18nService.getTranslation('pleaseContactSupport') }}
+  </h2>
+
+  <form >
+
+    <div class="form-group">
+      <label for="name">
+        {{ i18nService.getTranslation('name') }}:
+      </label>
+      <input type="text" class="form-control" id="name" placeholder="Digite seu nome"
+        aria-label="Name" aria-describedby="name-help">
+      <small id="name-help" class="form-text text-muted">
+        {{ i18nService.getTranslation('enterYourFullName') }}
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="email">
+        {{ i18nService.getTranslation('email') }}:
+      </label>
+      <input type="email" class="form-control" id="email" placeholder="Digite seu e-mail"
+        aria-label="E-mail" aria-describedby="email-help">
+      <small id="email-help" class="form-text text-muted">
+        {{ i18nService.getTranslation('enterValidEmail') }}
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="message">
+        {{ i18nService.getTranslation('message') }}:
+      </label>
+      <textarea class="form-control" id="message" rows="5" placeholder="Digite sua mensagem"
+        aria-label="Message" aria-describedby="message-help"></textarea>
+      <small id="message-help" class="form-text text-muted">
+        {{ i18nService.getTranslation('enterYourMessageHere') }}
+      </small>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+      {{ i18nService.getTranslation('toSend') }}
+    </button>
+
+  </form>
+</div>

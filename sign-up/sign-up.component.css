@@ -1,0 +1,50 @@
+/* Estilos para telas grandes */
+@media (min-width: 992px) {
+  .container-signup {
+    max-width: 960px;
+  }
+}
+
+/* Estilos para telas médias */
+@media (max-width: 991px) {
+  .container-signup {
+    max-width: 720px;
+  }
+}
+
+/* Estilos para telas pequenas */
+@media (max-width: 767px) {
+  .container-signup {
+    max-width: 540px;
+  }
+}
+
+/* Estilos para todos os tamanhos de tela */
+.container-signup {
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.btn-primary {
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+}

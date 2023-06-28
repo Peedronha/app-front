@@ -1,0 +1,72 @@
+.container-fluid {
+  margin-top: 7rem;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.sticky-header {
+  position: sticky;
+  top: 0;
+  background-color: #f8f9fa;
+  padding: 10px;
+}
+
+.main-content {
+  margin-bottom: 20px;
+}
+
+.my-breadcrumb {
+  background-color: #f8f9fa;
+  padding: 10px;
+}
+
+.welcome-msg {
+  font-size: 14px;
+}
+
+.small {
+  font-size: 14px;
+}
+
+.number {
+  text-align: left;
+}
+
+.stat-text {
+  text-align: left;
+}
+
+.card__grid--effect {
+  background-color: #f8f9fa;
+}
+
+.table-sm {
+  font-size: 14px;
+}
+
+.table-bordered {
+  border: 1px solid #dee2e6;
+}
+
+.pagination {
+  margin-top: 20px;
+}
+
+.pagination .page-item.disabled .page-link {
+  pointer-events: none;
+  background-color: #f8f9fa;
+  color: #6c757d;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.form-control {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+th, h2 {
+  text-align: center;
+}

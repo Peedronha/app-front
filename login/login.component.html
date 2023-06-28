@@ -1,0 +1,53 @@
+<div class="container container-login">
+
+  <h1 class="text-center">
+    {{ i18nService.getTranslation('login') }}
+  </h1>
+
+  <form (ngSubmit)="loginForm.valid && validateUser(loginForm)" #loginForm="ngForm">
+
+    <div class="form-group">
+      <label for="email" class="visually-hidden">
+        {{ i18nService.getTranslation('email') }}:
+      </label>
+      <input type="email" id="email" class="form-control" name="email"
+        placeholder="Digite seu email" required
+        pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+        aria-label="Email" aria-describedby="email-help"
+        [(ngModel)]="model.email" #email="ngModel">
+      <small id="email-help" class="form-text text-muted">
+        {{ i18nService.getTranslation('enterYourUserEmail') }}
+      </small>
+    </div>
+
+    <div class="error-details">
+      {{ i18nService.getTranslation('enterValidEmail') }}
+    </div>
+
+    <div class="form-group">
+      <label for="senha" class="visually-hidden">
+        {{ i18nService.getTranslation('password') }}:
+      </label>
+      <input type="password" id="password" class="form-control" placeholder="Digite sua senha" required
+        aria-label="Password" aria-describedby="password-help" minlength="8"
+        [(ngModel)]="model.password" #password="ngModel">
+      <small id="password-help" class="form-text text-muted">
+        {{ i18nService.getTranslation('enterYourPassword') }}
+      </small>
+    </div>
+
+    <div *class="error-details">
+      {{ i18nService.getTranslation('passwordMustContainAtLeast') }}
+      {{ i18nService.getTranslation('caracters') }}
+    </div>
+
+    <button type="submit" class="btn btn-primary" >
+      {{ i18nService.getTranslation('login') }}
+    </button>
+
+  </form>
+  <div class="links">
+    <a routerLink="/forgot-password">{{ i18nService.getTranslation('forgotPassword') }}</a>
+    <a routerLink="/signup">{{ i18nService.getTranslation('signUp') }}</a>
+  </div>
+</div>

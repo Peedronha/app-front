@@ -1,0 +1,18 @@
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.image-description {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.container-fluid {
+  margin-top: 7rem;
+}

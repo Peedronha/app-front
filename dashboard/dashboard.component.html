@@ -1,0 +1,149 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <!-- CARD SALDO-->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-title">
+            {{ i18nService.getTranslation('totalBalance') }} (BRL):</h6>
+          <p>{{ totalBalanceFormatted }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD DESPESA-->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-title">
+            {{ i18nService.getTranslation('totalExpenses') }} (BRL):</h6>
+          <p>{{ totalExpenses | currency: 'BRL' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TABELA PRODUTO -->
+<div class="row mt-4 mb-4">
+  <div class="col">
+    <h2>{{ i18nService.getTranslation('titleProductsInStock') }}</h2>
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>{{ i18nService.getTranslation('thId') }}</th>
+            <th>{{ i18nService.getTranslation('thDescription') }}</th>
+            <th>{{ i18nService.getTranslation('thAmount') }}</th>
+            <th>{{ i18nService.getTranslation('thQuantity') }}</th>
+            <th>{{ i18nService.getTranslation('thAvailability') }}</th>
+            <th>{{ i18nService.getTranslation('thCreatedAt') }}</th>
+            <th></th> <!-- Coluna para os botões de ação -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of stockProducts">
+            <td>{{ product.id }}</td>
+            <td>{{ product.description }}</td>
+            <td>{{ product.amount }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.availability }}</td>
+            <td>{{ product.createdAt }}</td>
+            <td>
+              <button class="btn btn-primary" (click)="editProduct(product.id)">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="btn btn-danger" (click)="deleteProduct(product.id)">
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button class="btn btn-primary" routerLink="/inventories/products">
+      {{ i18nService.getTranslation('btnToAdd') }}</button>
+  </div>
+</div>
+
+<!-- TABELA RECEITAS -->
+<div class="row mt-4 mb-4">
+  <div class="col">
+    <h2>{{ i18nService.getTranslation('titleRevenue') }}</h2>
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>{{ i18nService.getTranslation('thId') }}</th>
+            <th>{{ i18nService.getTranslation('thDescription') }}</th>
+            <th>{{ i18nService.getTranslation('thAmount') }}</th>
+            <th>{{ i18nService.getTranslation('thCreatedAt') }}</th>
+            <th>{{ i18nService.getTranslation('thUpdateDate') }}</th>
+            <th></th> <!-- Coluna para os botões de ação -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let revenue of revenues">
+            <td>{{ revenue.id }}</td>
+            <td>{{ revenue.description }}</td>
+            <td>{{ revenue.amount }}</td>
+            <td>{{ revenue.createdAt }}</td>
+            <td>{{ revenue.updateDate }}</td>
+            <td>
+              <button class="btn btn-primary" (click)="editRevenue(revenue.id)">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="btn btn-danger" (click)="deleteRevenue(revenue.id)">
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button class="btn btn-primary" routerLink="/finances/revenues/form">
+      {{ i18nService.getTranslation('btnToAdd') }}</button>
+  </div>
+</div>
+
+<!-- TABELA DESPESAS -->
+<div class="row mt-4 mb-4">
+  <div class="col">
+    <h2>{{ i18nService.getTranslation('titleExpense') }}</h2>
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>{{ i18nService.getTranslation('thId') }}</th>
+            <th>{{ i18nService.getTranslation('thDescription') }}</th>
+            <th>{{ i18nService.getTranslation('thAmount') }}</th>
+            <th>{{ i18nService.getTranslation('thCreatedAt') }}</th>
+            <th>{{ i18nService.getTranslation('thUpdateDate') }}</th>
+            <th></th> <!-- Coluna para os botões de ação -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let expense of expenses">
+            <td>{{ expense.id }}</td>
+            <td>{{ expense.description }}</td>
+            <td>{{ expense.amount }}</td>
+            <td>{{ expense.createdAt }}</td>
+            <td>{{ expense.updateDate }}</td>
+            <td>
+              <button class="btn btn-primary" (click)="editExpense(expense.id)">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button class="btn btn-danger" (click)="deleteExpense(expense.id)">
+                <i class="fas fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button class="btn btn-primary" routerLink="/finances/expenses">
+      {{ i18nService.getTranslation('btnToAdd') }}</button>
+  </div>
+</div>
+
+</div>

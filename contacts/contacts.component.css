@@ -1,0 +1,47 @@
+/* Contacts */
+.container-contact {
+  margin-top: 7rem;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Responsividade */
+
+/* Contacts */
+@media (max-width: 576px) {
+  .container-contact {
+    padding: 0 10px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    padding: 6px;
+  }
+}
